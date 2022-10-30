@@ -21,4 +21,8 @@ class CheckUser
         }
         return redirect('/');
     }
+
+    public function terminate($req, $res) {
+        file_put_contents(__DIR__. '/abc.txt', 'Hello World from terminate method');
+    }
 }
