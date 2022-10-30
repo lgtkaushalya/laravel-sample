@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/about', function () {
     return view('about');
-})->middleware('ipcheck');
+})->middleware(['auth', 'checkuser:sasika@gmail.com']);
 
 Auth::routes();
 
