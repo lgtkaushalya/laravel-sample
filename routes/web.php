@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FallbackController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Ramsey\Uuid\Builder\FallbackBuilder;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +42,5 @@ Route::match(['GET', 'POST'], '/contactmatch', ContactController::class);
 Route::any('/contactany', ContactController::class);
 
 Route::view('/contactview', 'contact', ['name' => 'Code with Thilanka']);
+
+Route::fallback(FallbackController::class);
