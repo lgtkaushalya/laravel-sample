@@ -28,8 +28,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/blog', [PostsController::class, 'index']);
-Route::get('/blog/{id}', [PostsController::class, 'show']);
+Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}/{name}', [PostsController::class, 'show'])->whereNumber('id')->whereAlpha('name');
 
 //Route::resource('blog', PostsController::class);
 
