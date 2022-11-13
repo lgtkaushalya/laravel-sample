@@ -28,9 +28,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route::get('/blog', [PostsController::class, 'index']);
+Route::get('/blog', [PostsController::class, 'index']);
+Route::get('/blog/{id}', [PostsController::class, 'show']);
 
-Route::resource('blog', PostsController::class);
+//Route::resource('blog', PostsController::class);
 
 Route::get('/contact', ContactController::class);
 
