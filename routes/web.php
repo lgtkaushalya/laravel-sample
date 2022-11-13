@@ -33,3 +33,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('blog', PostsController::class);
 
 Route::get('/contact', ContactController::class);
+
+Route::match(['GET', 'POST'], '/contactmatch', ContactController::class);
+
+Route::any('/contactany', ContactController::class);
+
+Route::view('/contactview', 'contact', ['name' => 'Code with Thilanka']);
