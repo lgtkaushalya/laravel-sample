@@ -35,6 +35,8 @@ Route::get('/blog/{id}/{name}', [PostsController::class, 'show'])->whereNumber('
 Route::get('/blog/{id}', [PostsController::class, 'show'])->whereNumber('id')->name('blog.show');
 Route::get('/blog/create', [PostsController::class, 'create'])->name('blog.create');
 Route::post('/blog',[PostsController::class, 'store'])->name('blog.store');
+Route::get('/blog/edit/{id}', [PostsController::class, 'edit'])->name('blog.edit');
+Route::patch('/blog/{id}',[PostsController::class, 'update'])->name('blog.update');
 
 //Route::resource('blog', PostsController::class);
 

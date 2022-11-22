@@ -57,6 +57,9 @@
                         </a>
                     on {{ $post->created_at }}
                 </span>
+                <a href="{{ route('blog.edit', $post->id) }}" class="block italic" text-green-500 border-b-1 border-green-400>
+                    Edit
+                </a>
             </div>
         </div>
     </div>

@@ -86,7 +86,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('blog.edit', compact('post'));
     }
 
     /**
@@ -98,7 +99,9 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Post::where('id', $id)->update($request->except('_token', '_method'));
+
+        return redirect(route('blog.index'));
     }
 
     /**
