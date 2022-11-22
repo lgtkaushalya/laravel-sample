@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +16,15 @@ class PostsController extends Controller
     public function index()
     {
         $posts = DB::table('post')->get();
+        //$posts = Post::all();
+        //$posts = Post::orderBy('id', 'desc')->take(10)->get();
+        //$posts = Post::where('min_to_read', '!=', 2)->get();
+        // Post::chunk(25, function ($posts) {
+        //     foreach($posts as $post) {
+        //         echo $post->title . '<br>';
+        //     }
+        // });
+
         return view('blog.index', compact('posts'));
 
     }
@@ -47,7 +57,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return $id;
+        $post = Post::findOrFail($id);
+        return $post;
     }
 
     /**

@@ -9,4 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     protected $table = "post";
+    // protected $primaryKey = 'title';
+    // protected $timestamps = false;
+    // protected $dateTime = 'U';
 }
