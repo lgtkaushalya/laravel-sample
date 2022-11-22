@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -13,9 +14,10 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
-    }
+        $posts = DB::table('post')->get();
+        return view('blog.index', compact('posts'));
 
+    }
     /**
      * Show the form for creating a new resource.
      *
