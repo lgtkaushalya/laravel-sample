@@ -16,7 +16,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = DB::table('post')->get();
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(20);
         //$posts = Post::all();
         //$posts = Post::orderBy('id', 'desc')->take(10)->get();
         //$posts = Post::where('min_to_read', '!=', 2)->get();
