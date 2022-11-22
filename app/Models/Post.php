@@ -11,7 +11,7 @@ class Post extends Model
     protected $table = "post";
 
     protected $fillable = [
-        'title', 'excerpt', 'img_path', 'min_to_read', 'body', 'is_published'
+        'user_id', 'title', 'excerpt', 'img_path', 'min_to_read', 'body', 'is_published'
     ];
     // protected $primaryKey = 'title';
     // protected $timestamps = false;
@@ -23,5 +23,9 @@ class Post extends Model
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function meta() {
+        return $this->hasOne(PostMeta::class);
     }
 }
