@@ -37,6 +37,7 @@ Route::get('/blog/create', [PostsController::class, 'create'])->name('blog.creat
 Route::post('/blog',[PostsController::class, 'store'])->name('blog.store');
 Route::get('/blog/edit/{id}', [PostsController::class, 'edit'])->name('blog.edit');
 Route::patch('/blog/{id}',[PostsController::class, 'update'])->name('blog.update');
+Route::delete('/blog/{id}', [PostsController::class, 'destroy'])->name('blog.destroy');
 
 //Route::resource('blog', PostsController::class);
 
