@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}/{name}', [PostsController::class, 'show'])->whereNumber('id')->whereAlpha('name');
-Route::get('/blog/{id}', [PostsController::class, 'show'])->whereNumber('id');
+Route::get('/blog/{id}', [PostsController::class, 'show'])->whereNumber('id')->name('blog.show');
 
 //Route::resource('blog', PostsController::class);
 
