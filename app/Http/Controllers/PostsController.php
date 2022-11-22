@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostFormRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -44,15 +45,9 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostFormRequest $request)
     {
-        $request->validate([
-            'title' => 'required|unique:post|max:255',
-            'excerpt' => 'required',
-            'body' => 'required',
-            'image' => ['required', 'mimes:jpeg,png,jpeg', 'max:5048'],
-            'min_to_read' => 'min:0:max:60'
-        ]);
+        $request->validated();
 
         Post::create([
             'title' => $request->title,
@@ -97,8 +92,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostFormRequest $request, $id)
     {
+        $request->validated();
         Post::where('id', $id)->update($request->except('_token', '_method'));
 
         return redirect(route('blog.index'));
