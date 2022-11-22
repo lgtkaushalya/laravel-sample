@@ -20,4 +20,8 @@ class Post extends Model
     // protected $attritures = [
     //     'is_publisehed' => true
     // ]; //Setting default values
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }
